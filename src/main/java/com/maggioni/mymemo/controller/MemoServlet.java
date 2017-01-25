@@ -4,6 +4,7 @@ import com.maggioni.mymemo.model.Memo;
 import com.maggioni.mymemo.view.MemoViewRenderer;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.ServletConfig;
@@ -34,6 +35,8 @@ public class MemoServlet extends HttpServlet {
     private void sendResponse(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
+        String err = (String)request.getAttribute("err");
+        List<Memo> memos = getMemos(request);
         response.getOutputStream().print(MemoViewRenderer.renderResponse(Collections.<Memo>emptyList(), null));
     }
 
@@ -55,7 +58,8 @@ public class MemoServlet extends HttpServlet {
 
     }
 
-    private void actionReset(HttpServletRequest request) {
+    private synchronized void actionReset(HttpServletRequest request) {
+        System.out.println("actionReset called");
         List<Memo> memos = getMemos(request);
         memos.clear();
     }
@@ -70,8 +74,32 @@ public class MemoServlet extends HttpServlet {
         return memos;
     }
     
-    private void actionAddMemo(HttpServletRequest request) {
+    private synchronized void actionAddMemo(HttpServletRequest request) {
         System.out.println("actionAddMemo called");
+        String memoDescr = request.getParameter("memo");
+        if (memoDescrIsFilled(memoDescr)) {
+            Memo memo = createMemo(memoDescr);
+            addMemoToMemos(request, memo);
+        } else {
+            request.setAttribute("err", "Please enter a Memo");
+        }
     }
+
+    private void addMemoToMemos(HttpServletRequest request, Memo memo) {
+        List<Memo> memos = getMemos(request);
+        memos.add(memo);
+    }
+
+    private boolean memoDescrIsFilled(String memoDescr) {
+        return (memoDescr != null && !memoDescr.isEmpty());
+    }
+
+    private Memo createMemo(String memoDescr) {
+        Memo memo = new Memo();
+        memo.setDescription(memoDescr);
+        memo.setCreated(new Date());
+        return memo;
+    }
+
 
 }
