@@ -3,7 +3,6 @@ package com.maggioni.mymemo.controller;
 import com.maggioni.mymemo.model.Memo;
 import com.maggioni.mymemo.view.MemoViewRenderer;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Collections;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
