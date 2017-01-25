@@ -37,7 +37,7 @@ public class MemoServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         String err = (String)request.getAttribute("err");
         List<Memo> memos = getMemos(request);
-        response.getOutputStream().print(MemoViewRenderer.renderResponse(Collections.<Memo>emptyList(), null));
+        response.getOutputStream().print(MemoViewRenderer.renderResponse(memos, null));
     }
 
     @Override
