@@ -4,12 +4,15 @@ import com.maggioni.mymemo.model.Memo;
 import com.maggioni.mymemo.view.MemoViewRenderer;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "MemoServlet", urlPatterns = {"/memos"})
 public class MemoServlet extends HttpServlet {
@@ -53,11 +56,22 @@ public class MemoServlet extends HttpServlet {
     }
 
     private void actionReset(HttpServletRequest request) {
-        System.out.println("");
+        List<Memo> memos = getMemos(request);
+        memos.clear();
     }
 
+    private List<Memo> getMemos(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        List<Memo> memos = (List<Memo>)session.getAttribute("memos");
+        if (memos == null) {
+            memos = new LinkedList<>();
+            session.setAttribute("memos", memos);
+        }
+        return memos;
+    }
+    
     private void actionAddMemo(HttpServletRequest request) {
-        System.out.println("");
+        System.out.println("actionAddMemo called");
     }
 
 }
