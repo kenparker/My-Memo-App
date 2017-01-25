@@ -22,7 +22,6 @@ public class MemoServlet extends HttpServlet {
         this.config = config;
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,4 +33,31 @@ public class MemoServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         response.getOutputStream().print(MemoViewRenderer.renderResponse(Collections.<Memo>emptyList(), null));
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
+        final String button = request.getParameter("button");
+        switch (button) {
+            case "reset":
+                actionReset(request);
+                break;
+            case "save":
+                actionAddMemo(request);
+                break;
+            default:
+        }
+        sendResponse(request, response);
+
+    }
+
+    private void actionReset(HttpServletRequest request) {
+        System.out.println("");
+    }
+
+    private void actionAddMemo(HttpServletRequest request) {
+        System.out.println("");
+    }
+
 }
