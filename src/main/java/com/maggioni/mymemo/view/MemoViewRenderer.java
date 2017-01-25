@@ -25,7 +25,7 @@ public class MemoViewRenderer {
         String part2 = "<h1>My Memos:</h1>";
         output.append(part2).append(renderTable(memos));
         String part3
-                = "</form>" + "</div>" + "<div id=\"footer\">" + "<p>(C) 2015 Schiesser/Schmollinger, MIT Licence</p>" + "</div>"
+                = "</form>" + "</div>" + "<div id=\"footer\">" + "<p>(C) 2015 Schiesser/Schmollinger - changed -, MIT Licence</p>" + "</div>"
                 + "</body>" + "</html>";
         output.append(part3);
 
