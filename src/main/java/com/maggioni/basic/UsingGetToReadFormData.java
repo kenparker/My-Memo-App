@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"getToRead1","getToRead2"})
+@WebServlet(urlPatterns = {"UsingGetToReadFormData","UsingGetToReadFormData2"})
 public class UsingGetToReadFormData extends HttpServlet {
 
     @Override
