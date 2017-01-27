@@ -20,7 +20,9 @@ public class UsingGetToReadFormData extends HttpServlet {
         String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "
                 + "transitional//en\">\n";
         
-        out.println(docType + "<html>\n" +
+        String meta = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>";
+        
+        out.println(docType + meta + "<html>\n" +
          "<head><title>" + title + "</title></head>\n" +
          "<body bgcolor=\"#f0f0f0\">\n" +
          "<h1 align=\"center\">" + title + "</h1>\n" +
