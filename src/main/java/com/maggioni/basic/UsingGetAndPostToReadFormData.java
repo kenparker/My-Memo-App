@@ -13,6 +13,7 @@ public class UsingGetAndPostToReadFormData extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("doGet Called");
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
@@ -37,6 +38,7 @@ public class UsingGetAndPostToReadFormData extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        System.out.println("doPost called");
+        this.doGet(request, response);
     }
 }
