@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("AgainANewHelloWorld")
-public class AgainANewHelloWorld extends HttpServlet{
+@WebServlet("HelloWorldWithInit")
+public class HelloWorldWithInit extends HttpServlet{
 
     private String message;
     

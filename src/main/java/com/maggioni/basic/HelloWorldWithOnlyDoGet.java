@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet({"HelloWorld", "Hello"})
-public class HelloWorldServlet extends HttpServlet{
+@WebServlet({"HelloWorldWithOnlyDoGet1", "HelloWorldWithOnlyDoGet2"})
+public class HelloWorldWithOnlyDoGet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
