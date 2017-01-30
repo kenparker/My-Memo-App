@@ -27,16 +27,16 @@ public class ReadAllParamsServlet extends HttpServlet {
 
         while (paramNames.hasMoreElements()) {
             String paramName = (String) paramNames.nextElement();
-            parseTableHeader(paramName);
+            parseRowName(paramName);
 
             String[] paramValues = request.getParameterValues(paramName);
-            processParameterValues(paramValues);
+            parseParameterValues(paramValues);
         }
 
         parseFooter(out);
     }
 
-    private void parseTableHeader(String paramName) {
+    private void parseRowName(String paramName) {
         out.print("<tr><td>" + paramName + "</td>\n<td>");
     }
 
@@ -44,7 +44,7 @@ public class ReadAllParamsServlet extends HttpServlet {
         out.println("</tr>\n</table>\n</body></html>");
     }
 
-    private void processParameterValues(String[] paramValues) {
+    private void parseParameterValues(String[] paramValues) {
         if (paramValues.length == 1) {
             parameterHasOnlyOneValue(paramValues);
         } else {
