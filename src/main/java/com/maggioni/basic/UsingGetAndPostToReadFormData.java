@@ -17,7 +17,7 @@ public class UsingGetAndPostToReadFormData extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
-        String title = "Using GET Method to Read Form Data";
+        String title = "Using GET und POST Method to Read Form Data";
         String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "
                 + "transitional//en\">\n";
 
