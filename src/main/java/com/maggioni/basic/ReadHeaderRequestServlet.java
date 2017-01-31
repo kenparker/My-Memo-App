@@ -47,7 +47,7 @@ public class ReadHeaderRequestServlet extends HttpServlet {
         // Set response content type
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        String title = "Reading All Form Parameters";
+        String title = "Reading HEADER Request Parameters";
         String docType = "<!doctype html public \"-//w3c//dtd html 4.0 "
                 + "transitional//en\">\n";
         out.println(docType + "<html>\n"
