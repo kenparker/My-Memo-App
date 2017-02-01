@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>My-Memo</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="screen.css"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <p><b>My-Memo</b> - A Simple Web App for Managing Memos</p>
+            </div>
+            <div id="content">
+                <h:form>
+                    <h1>Add Memo:</h1>
+
+                    <h:inputText id="memo" size="30" value="#{memoController.memo.description}"
+                                 validatorMessage="Please, enter a memo!">
+                        <f:passThroughAttribute name="placeholder" value="Enter your memo here" />
+                        <f:validateRequired />
+                    </h:inputText>
+
+                    <h:commandButton value="Add"
+                                     actionListener="#{memoController.doAdd}" />
+                    <h:message for="memo" style="color: red;" />
+
+                    <h1>My Memos:</h1>
+
+                    <h:dataTable value="#{memoController.memos}" rendered="#{!empty memoController.memos}" var="memo">
+                        <h:column>
+                            <f:facet name="header">Memo</f:facet>
+                            <h:outputText value="#{memo.description}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Saved</f:facet>
+                            <h:outputText value="#{memo.created}" />
+                        </h:column>
+                    </h:dataTable>
+                    <h:outputText value="Please add some memos." rendered="#{empty memoController.memos}"/>
+                    <h:commandButton value="Reset list" immediate="true" rendered="#{!empty memoController.memos}"
+                                     actionListener="#{memoController.doReset}" />
+                </h:form>
+            </div>
+            <div id="footer">
+                <p> (C) 2015 Schiesser/Schmollinger, MIT license</p>
+            </div>
+        </div>
+    </h:body>
+</html>

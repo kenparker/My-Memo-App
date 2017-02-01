@@ -1,7 +1,6 @@
 package com.maggioni.mymemo.controller;
 
 import com.maggioni.mymemo.model.Memo;
-import com.maggioni.mymemo.view.MemoViewRenderer;
 import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
