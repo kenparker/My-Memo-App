@@ -3,7 +3,6 @@ package com.maggioni.mymemo.controller;
 import com.maggioni.mymemo.model.Memo;
 import com.maggioni.mymemo.view.MemoViewRenderer;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,12 +31,8 @@ public class MemoServlet extends HttpServlet {
         sendResponse(request, response);
     }
 
-    private void sendResponse(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("utf-8");
-        String err = (String)request.getAttribute("err");
-        List<Memo> memos = getMemos(request);
-        response.getOutputStream().print(MemoViewRenderer.renderResponse(memos, null));
+    private void sendResponse(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        config.getServletContext().getRequestDispatcher("/WEB-INF/memos.jsp").forward(request, response);
     }
 
     @Override
